@@ -1,5 +1,7 @@
 import './reset.css';
 
+import { useCallback } from 'react';
+
 import styles from './Login.module.css';
 
 type Nickname = {
@@ -7,13 +9,65 @@ type Nickname = {
   tag: string;
 };
 
+type LoginToken = {
+  id: string; password: string;
+}
+
+type AuthToken = {
+  user_id: string; token: string; message: string;
+}
+
+type InfoToken = {
+  id: string; isAdmin: boolean; regDate: string; notificationCheckedAt: string; email: string; localId: string; fbName: string; nickname: Nickname;
+}
+
 const Login = ({
   onLoginSuccess,
 }: {
   onLoginSuccess: ({ newNickname }: { newNickname: Nickname }) => void;
 }) => {
-  //todo
-  const newNickname = { nickname: 'asdf', tag: 'todo' };
+    const requestLogin = useCallback(()=>{
+      const requestBody: LoginToken={
+        id: (document.getElementById('id') as HTMLInputElement).value,
+        password: (document.getElementById('password') as HTMLInputElement).value
+      };
+  
+      fetch('https://wafflestudio-seminar-2024-snutt-redirect.vercel.app/v1/auth/login_local', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(requestBody)
+      })
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error('Login failed: ' + response.statusText);
+        }
+        return response.json() as Promise<AuthToken>;
+      })
+      .then((response) => {
+        return fetch('https://wafflestudio-seminar-2024-snutt-redirect.vercel.app/v1/users/me', {
+          method: 'GET',
+          headers: {
+            'Content-Type': 'application/json',
+            'x-access-token': response.token
+          }
+        });
+      })
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error('Loading information failed: '+response.statusText);
+        }
+        return response.json() as Promise<InfoToken>
+      })
+      .then((response) => {
+        onLoginSuccess({newNickname: response.nickname});
+      })
+      .catch((error: unknown) => {
+        console.error('Error during login:', error);
+        alert((error instanceof Error ? error.message : 'Unknown error'));
+      });
+    }, [onLoginSuccess]);
 
   return (
     <div className={styles.wrapper}>
@@ -24,13 +78,15 @@ const Login = ({
           <input
             className={styles.inputBox}
             type="text"
+            id="id"
             placeholder="아이디를 입력하세요"
           />
 
           <label className={styles.text}>비밀번호</label>
           <input
             className={styles.inputBox}
-            type="text"
+            type="password"
+            id="password"
             placeholder="비밀번호를 입력하세요"
           />
           <label className={styles.additional}>
@@ -38,11 +94,9 @@ const Login = ({
           </label>
           <button
             className={styles.login}
-            onClick={() => {
-              onLoginSuccess({ newNickname });
-            }}
+            onClick={requestLogin}
           >
-            Login
+            로그인
           </button>
         </div>
       </div>
