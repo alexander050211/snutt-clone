@@ -1,5 +1,7 @@
 import './reset.css';
 
+import styles from './Landing.module.css';
+
 type Nickname = {
   nickname: string;
   tag: string;
@@ -8,11 +10,11 @@ type Nickname = {
 const Landing = ({ nickname }: { nickname: Nickname }) => {
   //todo
   return (
-    <>
-      <h1>
+    <div className={styles.container}>
+      <h1 className={styles.title}>
         {nickname.nickname}#{nickname.tag}
       </h1>
-    </>
+    </div>
   );
 };
 
