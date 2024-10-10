@@ -1,11 +1,11 @@
 .container {
-    display: flex;
-    justify-content: center; 
-    align-items: center; 
-    height: 100vh; 
-    margin-top: 0; 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin-top: 0;
 }
 
 .title {
-    text-align: center;
+  text-align: center;
 }

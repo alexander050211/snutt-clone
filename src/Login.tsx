@@ -10,35 +10,48 @@ type Nickname = {
 };
 
 type LoginToken = {
-  id: string; password: string;
-}
+  id: string;
+  password: string;
+};
 
 type AuthToken = {
-  user_id: string; token: string; message: string;
-}
+  user_id: string;
+  token: string;
+  message: string;
+};
 
 type InfoToken = {
-  id: string; isAdmin: boolean; regDate: string; notificationCheckedAt: string; email: string; localId: string; fbName: string; nickname: Nickname;
-}
+  id: string;
+  isAdmin: boolean;
+  regDate: string;
+  notificationCheckedAt: string;
+  email: string;
+  localId: string;
+  fbName: string;
+  nickname: Nickname;
+};
 
 const Login = ({
   onLoginSuccess,
 }: {
   onLoginSuccess: ({ newNickname }: { newNickname: Nickname }) => void;
 }) => {
-    const requestLogin = useCallback(()=>{
-      const requestBody: LoginToken={
-        id: (document.getElementById('id') as HTMLInputElement).value,
-        password: (document.getElementById('password') as HTMLInputElement).value
-      };
-  
-      fetch('https://wafflestudio-seminar-2024-snutt-redirect.vercel.app/v1/auth/login_local', {
+  const requestLogin = useCallback(() => {
+    const requestBody: LoginToken = {
+      id: (document.getElementById('id') as HTMLInputElement).value,
+      password: (document.getElementById('password') as HTMLInputElement).value,
+    };
+
+    fetch(
+      'https://wafflestudio-seminar-2024-snutt-redirect.vercel.app/v1/auth/login_local',
+      {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify(requestBody)
-      })
+        body: JSON.stringify(requestBody),
+      },
+    )
       .then((response) => {
         if (!response.ok) {
           throw new Error('Login failed: ' + response.statusText);
@@ -46,28 +59,31 @@ const Login = ({
         return response.json() as Promise<AuthToken>;
       })
       .then((response) => {
-        return fetch('https://wafflestudio-seminar-2024-snutt-redirect.vercel.app/v1/users/me', {
-          method: 'GET',
-          headers: {
-            'Content-Type': 'application/json',
-            'x-access-token': response.token
-          }
-        });
+        return fetch(
+          'https://wafflestudio-seminar-2024-snutt-redirect.vercel.app/v1/users/me',
+          {
+            method: 'GET',
+            headers: {
+              'Content-Type': 'application/json',
+              'x-access-token': response.token,
+            },
+          },
+        );
       })
       .then((response) => {
         if (!response.ok) {
-          throw new Error('Loading information failed: '+response.statusText);
+          throw new Error('Loading information failed: ' + response.statusText);
         }
-        return response.json() as Promise<InfoToken>
+        return response.json() as Promise<InfoToken>;
       })
       .then((response) => {
-        onLoginSuccess({newNickname: response.nickname});
+        onLoginSuccess({ newNickname: response.nickname });
       })
       .catch((error: unknown) => {
         console.error('Error during login:', error);
-        alert((error instanceof Error ? error.message : 'Unknown error'));
+        alert(error instanceof Error ? error.message : 'Unknown error');
       });
-    }, [onLoginSuccess]);
+  }, [onLoginSuccess]);
 
   return (
     <div className={styles.wrapper}>
@@ -92,10 +108,7 @@ const Login = ({
           <label className={styles.additional}>
             아이디 찾기 | 비밀번호 재설정
           </label>
-          <button
-            className={styles.login}
-            onClick={requestLogin}
-          >
+          <button className={styles.login} onClick={requestLogin}>
             로그인
           </button>
         </div>
