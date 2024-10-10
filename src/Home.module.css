@@ -1,0 +1,242 @@
+.groupChild {
+  position: absolute;
+  top: 39.13px;
+  left: 39.85px;
+  background-color: #ec8572;
+  width: 20.1px;
+  height: 20.9px;
+}
+.groupItem {
+  position: absolute;
+  top: 15.52px;
+  left: 39.85px;
+  background-color: #ef975d;
+  width: 20.1px;
+  height: 20.9px;
+}
+.groupInner {
+  position: absolute;
+  top: 39.13px;
+  left: 16.24px;
+  background-color: #ef975d;
+  width: 20.1px;
+  height: 20.9px;
+}
+.rectangleDiv {
+  position: absolute;
+  top: 15.52px;
+  left: 16.24px;
+  background-color: #ef975d;
+  width: 20.1px;
+  height: 20.9px;
+}
+.groupChild1 {
+  position: absolute;
+  top: 0px;
+  left: 11px;
+  background-color: #26181d;
+  width: 6.7px;
+  height: 60px;
+}
+.groupChild2 {
+  position: absolute;
+  top: 0px;
+  left: 34.91px;
+  background-color: #26181d;
+  width: 6.7px;
+  height: 60px;
+}
+.groupChild3 {
+  position: absolute;
+  top: 41.28px;
+  left: 0px;
+  background-color: #26181d;
+  width: 6.7px;
+  height: 60px;
+  transform: rotate(-90deg);
+  transform-origin: 0 0;
+}
+.groupChild4 {
+  position: absolute;
+  top: 17.37px;
+  left: 0px;
+  background-color: #26181d;
+  width: 6.7px;
+  height: 60px;
+  transform: rotate(-90deg);
+  transform-origin: 0 0;
+}
+.rectangleParent {
+  width: 60px;
+  position: relative;
+  height: 60px;
+}
+.timetable {
+  position: relative;
+  font-weight: 800;
+}
+.groupParent {
+  position: absolute;
+  top: 0px;
+  left: 133.5px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 16px;
+}
+.button {
+  position: relative;
+}
+.buttonfilled {
+  align-self: stretch;
+  border-radius: 6px;
+  background-color: #f58d3d;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  padding: 12px;
+}
+.button1 {
+  position: relative;
+  font-weight: 600;
+}
+.buttonWrapper {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+}
+.buttontext {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  text-align: center;
+  color: #505050;
+}
+.buttonfilledParent {
+  width: 311px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 14px;
+}
+.frameWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  padding: 0px 32px;
+}
+.frameChild {
+  flex: 1;
+  position: relative;
+  background-color: #c4c4c4;
+  border-top: 0.8px solid #c4c4c4;
+  box-sizing: border-box;
+  height: 0.8px;
+}
+.sns {
+  position: relative;
+  font-weight: 500;
+}
+.lineParent {
+  align-self: stretch;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+.kakaoLoginSmall1Icon {
+  width: 44px;
+  position: relative;
+  border-radius: 21.6px;
+  height: 44px;
+  object-fit: cover;
+}
+.googleGLogo {
+  width: 24.8px;
+  position: relative;
+  border-radius: 24.4px;
+  height: 24.8px;
+  object-fit: cover;
+  src: url(./Google\ _G_\ logo.png);
+}
+.googleGLogoWrapper {
+  width: 44px;
+  border-radius: 42.8px;
+  background-color: #fff;
+  border: 0.4px solid #c4c4c4;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  padding: 9.6px;
+}
+.rgb1Icon {
+  width: 44px;
+  position: relative;
+  height: 44px;
+  object-fit: cover;
+}
+.appleidButton2x1Icon {
+  width: 44px;
+  position: relative;
+  border-radius: 28.4px;
+  height: 44px;
+  object-fit: cover;
+}
+.kakaoLoginSmall1Parent {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 12px;
+}
+.frameDiv {
+  width: 351px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 24px;
+}
+.frameContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  padding: 0px 12px;
+  color: #c4c4c4;
+}
+.frameGroup {
+  position: absolute;
+  top: 237px;
+  left: 0px;
+  width: 375px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 40px;
+  text-align: left;
+  font-size: 14px;
+  color: #fff;
+  font-family: Pretendard;
+}
+.frameParent {
+  width: 100%;
+  position: relative;
+  background-color: #fff;
+  height: 434px;
+  text-align: center;
+  font-size: 21.35px;
+  color: #000;
+  font-family: 'SF Pro';
+  top: 276px;
+}
