@@ -1,8 +1,8 @@
 import appleId from './appleid_button@2x 1.png';
-import facebook from './페이스북_로고_심볼형_RGB 1.png';
 import googleGLogo from './Google _G_ logo.png';
-import kakaoLoginSmall1 from './kakao_login_small 1.png';
 import styles from './Home.module.css';
+import kakaoLoginSmall1 from './kakao_login_small 1.png';
+import facebook from './페이스북_로고_심볼형_RGB 1.png';
 
 const Home = ({ onLoginButtonClick }: { onLoginButtonClick: () => void }) => {
   //todo

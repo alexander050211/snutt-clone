@@ -3282,6 +3282,7 @@ __metadata:
     "@vitejs/plugin-react-swc": "npm:3.7.1"
     "@woohm402/eslint-config-react": "npm:0.7.1"
     eslint: "npm:9.11.1"
+    eslint-plugin-simple-import-sort: "npm:12.1.1"
     knip: "npm:5.30.6"
     prettier: "npm:3.3.3"
     react: "npm:18.3.1"
