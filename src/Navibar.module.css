@@ -1,0 +1,21 @@
+.navibarFrame {
+  width: 100%;
+  top: 716px;
+  gap: 0px;
+  border: 0.5px 0px 0px 0px;
+  border-top: 0.5px solid var(--Line-divider, #c4c4c4);
+}
+
+.navibarContent {
+  display: flex;
+  flex-direction: row;
+  padding: 10px 30px 10px 30px;
+  gap: 0px;
+  justify-content: space-between;
+}
+
+.navibarButton {
+  outline: none;
+  background-color: transparent;
+  border: none;
+}
