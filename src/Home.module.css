@@ -87,6 +87,11 @@
 .button {
   position: relative;
 }
+a {
+  text-decoration: none;
+  color: white;
+  font-weight: bold;
+}
 .buttonfilled {
   align-self: stretch;
   border-radius: 6px;

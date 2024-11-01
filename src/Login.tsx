@@ -85,6 +85,12 @@ const Login = ({
       });
   }, [onLoginSuccess]);
 
+  const handleKeyDown = (event: React.KeyboardEvent) => {
+    if (event.key === 'Enter') {
+      requestLogin();
+    }
+  };
+
   return (
     <div className={styles.wrapper}>
       <div className={styles.content}>
@@ -104,6 +110,7 @@ const Login = ({
             type="password"
             id="password"
             placeholder="비밀번호를 입력하세요"
+            onKeyDown={handleKeyDown}
           />
           <label className={styles.additional}>
             아이디 찾기 | 비밀번호 재설정

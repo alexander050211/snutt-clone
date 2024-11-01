@@ -1,0 +1,69 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin-top: 0;
+}
+
+.headerFrame {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  top: 44px;
+  padding: 8px 12px 6px 16px;
+  gap: 10px;
+  border: 0px 0px 0.5px 0px;
+  border-bottom: 0.5px solid var(--Line-divider, #c4c4c4);
+}
+
+.headerInnerFrame {
+  gap: 0px;
+  justify-content: space-between;
+}
+
+.headerContentFrame {
+  display: flex;
+  flex-direction: row;
+  gap: 12px;
+}
+
+.tabButton {
+  outline: none;
+  background-color: transparent;
+  border: none;
+}
+
+.headerTextFrame {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 8px;
+}
+
+.timetableTitle {
+  font-family: Apple SD Gothic Neo;
+  font-size: 17px;
+  font-weight: 700;
+  line-height: 20.4px;
+  text-align: left;
+  color: var(--Text-Normal, #000000);
+}
+
+.timetableCredit {
+  font-family: Apple SD Gothic Neo;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 14.4px;
+  text-align: left;
+  color: var(--Text-Assistive, #c4c4c4);
+}
+
+.timetableFrame {
+  height: 100%;
+}
+
+.title {
+  text-align: center;
+}

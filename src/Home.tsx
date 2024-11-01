@@ -1,10 +1,13 @@
+import { Link } from 'react-router-dom';
+
 import appleId from './appleid_button@2x 1.png';
 import googleGLogo from './Google _G_ logo.png';
 import styles from './Home.module.css';
 import kakaoLoginSmall1 from './kakao_login_small 1.png';
 import facebook from './페이스북_로고_심볼형_RGB 1.png';
 
-const Home = ({ onLoginButtonClick }: { onLoginButtonClick: () => void }) => {
+//const Home = ({ onLoginButtonClick }: { onLoginButtonClick: () => void })
+const Home = () => {
   //todo
   return (
     <div className={styles.frameParent}>
@@ -25,9 +28,9 @@ const Home = ({ onLoginButtonClick }: { onLoginButtonClick: () => void }) => {
         <div className={styles.frameWrapper}>
           <div className={styles.buttonfilledParent}>
             <div className={styles.buttonfilled}>
-              <b className={styles.button} onClick={onLoginButtonClick}>
+              <Link to="/login" className={styles.button}>
                 로그인
-              </b>
+              </Link>
             </div>
             <div className={styles.buttontext}>
               <div className={styles.buttonWrapper}>
