@@ -8,10 +8,6 @@ import lecturereview from './resources/navibar_lecture_review.svg';
 import mypage from './resources/navibar_mypage.svg';
 import search from './resources/navibar_search.svg';
 import timetable from './resources/navibar_timetable.svg';
-
-//선택된 메뉴가 검은색으로 칠해지는 건 구현해야 됨
-//검색, 강의평, 친구도 일단 시간표로 연결해 둠
-
 const Navibar = () => {
   return (
     <div className={styles.navibarFrame}>

@@ -1,5 +1,4 @@
 import './reset.css';
-
 import { useEffect, useState } from 'react';
 import {
   BrowserRouter as Router,
@@ -49,7 +48,6 @@ const AppRoutes = () => {
       localStorage.removeItem(NICKNAME_STORAGE_KEY);
     }
   }, [nickname]);
-
   const navigate = useNavigate();
 
   const onLoginSuccess = ({ newNickname }: { newNickname: Nickname }) => {
@@ -62,7 +60,7 @@ const AppRoutes = () => {
     localStorage.removeItem(NICKNAME_STORAGE_KEY);
     navigate('/login');
   };
-
+    
   return (
     <Routes>
       <Route
