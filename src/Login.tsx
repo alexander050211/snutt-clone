@@ -1,6 +1,6 @@
 import './reset.css';
 
-import { useCallback } from 'react';
+import { useCallback, useState } from 'react';
 
 import styles from './Login.module.css';
 
@@ -36,7 +36,11 @@ const Login = ({
 }: {
   onLoginSuccess: ({ newNickname }: { newNickname: Nickname }) => void;
 }) => {
+  const [isLoading, setIsLoading] = useState<boolean>(false);
+
   const requestLogin = useCallback(() => {
+    setIsLoading(true);
+
     const requestBody: LoginToken = {
       id: (document.getElementById('id') as HTMLInputElement).value,
       password: (document.getElementById('password') as HTMLInputElement).value,
@@ -82,6 +86,9 @@ const Login = ({
       .catch((error: unknown) => {
         console.error('Error during login:', error);
         alert(error instanceof Error ? error.message : 'Unknown error');
+      })
+      .finally(() => {
+        setIsLoading(false);
       });
   }, [onLoginSuccess]);
 
@@ -116,7 +123,7 @@ const Login = ({
             아이디 찾기 | 비밀번호 재설정
           </label>
           <button className={styles.login} onClick={requestLogin}>
-            로그인
+            {isLoading ? '로그인 중...' : '로그인'}
           </button>
         </div>
       </div>

@@ -1,8 +1,8 @@
 import './reset.css';
 
 import Navibar from './Navibar.tsx';
+import tabImage from './resources/topbar_listview.svg';
 import styles from './Timetable.module.css';
-import tabImage from './topbar_listview.svg';
 
 /*
 type Nickname = {
