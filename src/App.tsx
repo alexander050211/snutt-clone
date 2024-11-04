@@ -61,7 +61,7 @@ const AppRoutes = () => {
     localStorage.removeItem(NICKNAME_STORAGE_KEY);
     navigate('/login');
   };
-    
+
   return (
     <Routes>
       <Route
