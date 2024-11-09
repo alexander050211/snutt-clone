@@ -3,11 +3,8 @@ import './reset.css';
 import { useCallback, useState } from 'react';
 
 import styles from './Login.module.css';
-
-type Nickname = {
-  nickname: string;
-  tag: string;
-};
+import { getToken, saveToken } from './utils/Functions';
+import type { InfoToken, Nickname } from './utils/Types';
 
 type LoginToken = {
   id: string;
@@ -20,21 +17,15 @@ type AuthToken = {
   message: string;
 };
 
-type InfoToken = {
-  id: string;
-  isAdmin: boolean;
-  regDate: string;
-  notificationCheckedAt: string;
-  email: string;
-  localId: string;
-  fbName: string;
-  nickname: Nickname;
-};
-
 const Login = ({
   onLoginSuccess,
 }: {
-  onLoginSuccess: ({ newNickname }: { newNickname: Nickname }) => void;
+  onLoginSuccess: ({
+    newNickname,
+  }: {
+    newNickname: Nickname;
+    newToken: string;
+  }) => void;
 }) => {
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
@@ -63,6 +54,8 @@ const Login = ({
         return response.json() as Promise<AuthToken>;
       })
       .then((response) => {
+        saveToken(response.token);
+
         return fetch(
           'https://wafflestudio-seminar-2024-snutt-redirect.vercel.app/v1/users/me',
           {
@@ -81,7 +74,10 @@ const Login = ({
         return response.json() as Promise<InfoToken>;
       })
       .then((response) => {
-        onLoginSuccess({ newNickname: response.nickname });
+        onLoginSuccess({
+          newNickname: response.nickname,
+          newToken: getToken() as string,
+        });
       })
       .catch((error: unknown) => {
         console.error('Error during login:', error);

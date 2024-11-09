@@ -1,6 +1,7 @@
 import './reset.css';
 
 import { useEffect, useState } from 'react';
+import toast, { Toaster } from 'react-hot-toast';
 import {
   BrowserRouter as Router,
   Route,
@@ -11,36 +12,42 @@ import {
 import Home from './Home';
 import Login from './Login';
 import Mypage from './Mypage';
+import MypageAccount from './MypageAccount';
+import MypageAccountChange from './MypageChangeNickname';
 import Timetable from './Timetable';
-
-type Nickname = {
-  nickname: string;
-  tag: string;
-};
-
-const NICKNAME_STORAGE_KEY = 'user_nickname';
-
-const saveNickname = (nickname: Nickname) => {
-  localStorage.setItem(NICKNAME_STORAGE_KEY, JSON.stringify(nickname));
-};
-
-const getNickname = (): Nickname | undefined => {
-  const saved = localStorage.getItem(NICKNAME_STORAGE_KEY);
-  if (saved != null) {
-    try {
-      return JSON.parse(saved) as Nickname;
-    } catch {
-      localStorage.removeItem(NICKNAME_STORAGE_KEY);
-      return undefined;
-    }
-  }
-  return undefined;
-};
+import {
+  getNickname,
+  getToken,
+  NICKNAME_STORAGE_KEY,
+  saveNickname,
+  saveToken,
+  TOKEN_STORAGE_KEY,
+} from './utils/Functions';
+import { fetchInformation } from './utils/Functions';
+import type { Nickname } from './utils/Types';
 
 const AppRoutes = () => {
   const [nickname, setNickname] = useState<Nickname | undefined>(() => {
     return getNickname();
   });
+  const [token, setToken] = useState<string | null>(getToken());
+
+  useEffect(() => {
+    let ignore = false;
+    fetchInformation()
+      .then((data) => {
+        if (!ignore && data !== null) {
+          setNickname(data.nickname);
+          saveNickname(data.nickname);
+        }
+      })
+      .catch((error: unknown) => {
+        console.error('Error: ', error);
+      });
+    return () => {
+      ignore = true;
+    };
+  }, []);
 
   useEffect(() => {
     if (nickname != null) {
@@ -48,35 +55,76 @@ const AppRoutes = () => {
     } else {
       localStorage.removeItem(NICKNAME_STORAGE_KEY);
     }
-  }, [nickname]);
+
+    if (token != null) {
+      saveToken(token);
+    } else {
+      localStorage.removeItem(TOKEN_STORAGE_KEY);
+    }
+  }, [token, nickname]);
   const navigate = useNavigate();
 
-  const onLoginSuccess = ({ newNickname }: { newNickname: Nickname }) => {
+  const onLoginSuccess = ({
+    newNickname,
+    newToken,
+  }: {
+    newNickname: Nickname;
+    newToken: string;
+  }) => {
     setNickname(newNickname);
+    setToken(newToken);
     navigate('/');
   };
 
   const handleLogout = () => {
     setNickname(undefined);
+    setToken(null);
+    localStorage.removeItem(TOKEN_STORAGE_KEY);
     localStorage.removeItem(NICKNAME_STORAGE_KEY);
     navigate('/login');
   };
 
+  const toMypage = () => {
+    navigate('/mypage');
+  };
+
+  const toAccount = () => {
+    navigate('/mypage/account');
+  };
+
+  const toChangeNickname = () => {
+    navigate('/mypage/account/change-nickname');
+  };
+
+  const notify = () => toast('❌ 닉네임 변경 오류!!');
+
   return (
-    <Routes>
-      <Route
-        path="/"
-        element={nickname !== undefined ? <Timetable /> : <Home />}
-      />
-      <Route
-        path="/login"
-        element={<Login onLoginSuccess={onLoginSuccess} />}
-      />
-      <Route
-        path="/mypage"
-        element={<Mypage nickname={nickname} onLogout={handleLogout} />}
-      />
-    </Routes>
+    <>
+      <Routes>
+        <Route path="/" element={token !== null ? <Timetable /> : <Home />} />
+        <Route
+          path="/login"
+          element={<Login onLoginSuccess={onLoginSuccess} />}
+        />
+        <Route
+          path="/mypage"
+          element={<Mypage onLogout={handleLogout} toAccount={toAccount} />}
+        />
+        <Route
+          path="/mypage/account"
+          element={
+            <MypageAccount toMypage={toMypage} toChange={toChangeNickname} />
+          }
+        />
+        <Route
+          path="/mypage/account/change-nickname"
+          element={
+            <MypageAccountChange toAccount={toAccount} notify={notify} />
+          }
+        />
+      </Routes>
+      <Toaster />
+    </>
   );
 };
 
