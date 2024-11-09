@@ -1,27 +1,18 @@
 import './reset.css';
 
-import Navibar from './Navibar.tsx';
+import Coursetemplate from './CourseTemplate';
+import Navibar from './Navibar';
 import tabImage from './resources/topbar_listview.svg';
 import styles from './Timetable.module.css';
 
-/*
-type Nickname = {
-  nickname: string;
-  tag: string;
-};
-*/
-
-//const Landing = ({ nickname }: { nickname: Nickname }): 지난 과제의 흔적
-
 const Timetable = () => {
-  //todo
   return (
     <div className={styles.container}>
-      <div className={styles.headerFrame}>
+      <header className={styles.headerFrame}>
         <div className={styles.headerInnerFrame}>
           <div className={styles.headerContentFrame}>
             <button className={styles.tabButton}>
-              <img src={tabImage} />
+              <img src={tabImage} alt="tab" />
             </button>
             <div className={styles.headerTextFrame}>
               <div className={styles.timetableTitle}>a안</div>
@@ -29,9 +20,13 @@ const Timetable = () => {
             </div>
           </div>
         </div>
-      </div>
-      <div className={styles.timetableFrame}>todo</div>
-      <Navibar />
+      </header>
+      <main className={styles.timetableFrame}>
+        <Coursetemplate />
+      </main>
+      <footer className={styles.navibarFrame}>
+        <Navibar />
+      </footer>
     </div>
   );
 };
