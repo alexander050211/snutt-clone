@@ -3,7 +3,12 @@ import './reset.css';
 import { useCallback, useState } from 'react';
 
 import styles from './Login.module.css';
-import { getToken, saveToken } from './utils/Functions';
+import {
+  getToken,
+  NICKNAME_STORAGE_KEY,
+  saveToken,
+  TOKEN_STORAGE_KEY,
+} from './utils/Functions';
 import type { InfoToken, Nickname } from './utils/Types';
 
 type LoginToken = {
@@ -69,6 +74,9 @@ const Login = ({
       })
       .then((response) => {
         if (!response.ok) {
+          localStorage.removeItem(TOKEN_STORAGE_KEY);
+          localStorage.removeItem(NICKNAME_STORAGE_KEY);
+
           throw new Error('Loading information failed: ' + response.statusText);
         }
         return response.json() as Promise<InfoToken>;

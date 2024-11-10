@@ -57,9 +57,11 @@ const CourseTemplate = () => {
 
       {/* Vertical Grid Lines */}
       <div className={styles.verticalLines}>
-        {days.map((day) => (
-          <div key={day} className={styles.verticalLine} />
-        ))}
+        <div className={styles.verticalLine} />
+        <div className={styles.verticalLine} />
+        <div className={styles.verticalLine} />
+        <div className={styles.verticalLine} />
+        <div className={styles.verticalLine} />
         <div className={styles.verticalLine} />
       </div>
     </div>
