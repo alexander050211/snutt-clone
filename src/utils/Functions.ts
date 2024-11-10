@@ -1,4 +1,4 @@
-import type { InfoToken, Nickname } from './Types';
+import type { InfoTimetable, InfoToken, Nickname } from './Types';
 
 export const NICKNAME_STORAGE_KEY = 'user_nickname';
 export const TOKEN_STORAGE_KEY = 'authorization_token';
@@ -21,9 +21,34 @@ export const fetchInformation = async () => {
   }
 };
 
+export const fetchTimetable = async () => {
+  try {
+    const url =
+      'https://wafflestudio-seminar-2024-snutt-redirect.vercel.app/v1/tables/recent';
+    const response = await fetch(url, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        'x-access-token': getToken() as string,
+      },
+    });
+    return (await response.json()) as InfoTimetable;
+  } catch (error) {
+    console.error('Error: ', error);
+    return null;
+  }
+};
+
+export const calculateTotalCredit = (infoTimetable: InfoTimetable) => {
+  const lecture_list = infoTimetable.lecture_list;
+
+  return lecture_list.reduce((sum, cur) => {
+    return sum + cur.credit;
+  }, 0);
+};
+
 export const saveToken = (token: string | null) => {
-  if (token != null) localStorage.setItem(TOKEN_STORAGE_KEY, token);
-  else localStorage.removeItem(TOKEN_STORAGE_KEY);
+  if (token !== null) localStorage.setItem(TOKEN_STORAGE_KEY, token);
 };
 
 export const getToken = (): string | null => {
@@ -51,6 +76,7 @@ export const getNickname = (): Nickname | undefined => {
       return JSON.parse(saved) as Nickname;
     } catch {
       localStorage.removeItem(NICKNAME_STORAGE_KEY);
+      localStorage.removeItem(TOKEN_STORAGE_KEY);
       return undefined;
     }
   }

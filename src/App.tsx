@@ -42,24 +42,30 @@ const AppRoutes = () => {
         }
       })
       .catch((error: unknown) => {
+        setToken(null);
+        setNickname(undefined);
+        localStorage.removeItem(TOKEN_STORAGE_KEY);
+        localStorage.removeItem(NICKNAME_STORAGE_KEY);
         console.error('Error: ', error);
       });
     return () => {
       ignore = true;
     };
-  }, []);
+  });
 
   useEffect(() => {
     if (nickname != null) {
       saveNickname(nickname);
     } else {
       localStorage.removeItem(NICKNAME_STORAGE_KEY);
+      localStorage.removeItem(TOKEN_STORAGE_KEY);
     }
 
     if (token != null) {
       saveToken(token);
     } else {
       localStorage.removeItem(TOKEN_STORAGE_KEY);
+      localStorage.removeItem(NICKNAME_STORAGE_KEY);
     }
   }, [token, nickname]);
   const navigate = useNavigate();

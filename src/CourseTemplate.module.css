@@ -14,7 +14,7 @@
   flex-direction: column;
   text-align: center;
   justify-content: flex-start;
-  gap: calc(calc(calc(100% - 27.5px) / 13) - 18px);
+  gap: calc(((100% - 27.5px) / 13) - 18px);
   z-index: 2;
 }
 
@@ -30,7 +30,7 @@
 .daysHeader {
   position: absolute;
   left: 20px;
-  top: 7.1px;
+  top: 7px;
   right: 0px;
   display: flex;
   justify-content: space-between;
@@ -69,14 +69,14 @@
   right: 0px;
   left: 0px;
   height: 0;
-  border-top: 1.4px solid #ebebed;
+  border: 1px solid #ebebed;
 }
 
 .secondaryLine {
   right: 0px;
   margin-left: 20px;
   height: 0;
-  border-top: 1.3px solid #f5f5f5;
+  border: 1px solid #f5f5f5;
 }
 
 .verticalLines {
@@ -87,10 +87,13 @@
   display: flex;
   justify-content: space-between;
   z-index: 1;
+  margin: 0;
+  gap: 0;
 }
 
 .verticalLine {
-  width: 0;
+  width: 2px;
   height: 100%;
-  border-right: 1.4px solid #ebebed;
+  background-color: #ebebed;
+  border: none;
 }

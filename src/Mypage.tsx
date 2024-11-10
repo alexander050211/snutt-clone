@@ -10,6 +10,7 @@ import {
   getNickname,
   NICKNAME_STORAGE_KEY,
   saveNickname,
+  TOKEN_STORAGE_KEY,
 } from './utils/Functions';
 import type { Nickname } from './utils/Types';
 
@@ -25,6 +26,7 @@ const Mypage = ({ onLogout, toAccount }: MypageProps) => {
     if (nickname != null) {
       saveNickname(nickname);
     } else {
+      localStorage.removeItem(TOKEN_STORAGE_KEY);
       localStorage.removeItem(NICKNAME_STORAGE_KEY);
     }
   }, [nickname]);
