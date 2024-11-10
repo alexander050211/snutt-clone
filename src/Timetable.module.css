@@ -14,6 +14,7 @@
   border-bottom: 0.5px solid #c4c4c4;
   background: white;
   position: fixed;
+  justify-content: space-between;
   align-items: center;
   top: 0;
 }
@@ -25,6 +26,7 @@
 }
 
 .headerContentFrame {
+  width: 100%;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -38,6 +40,14 @@
   padding: 0;
   cursor: pointer;
   display: flex;
+  align-items: center;
+}
+
+.topTab {
+  margin-left: auto;
+  gap: 4px;
+  display: flex;
+  float: row;
   align-items: center;
 }
 

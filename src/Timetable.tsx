@@ -5,6 +5,9 @@ import { useEffect, useState } from 'react';
 import Coursetemplate from './CourseTemplate';
 import Navibar from './Navibar';
 import tabImage from './resources/topbar_listview.svg';
+import topTabAlarmOff from './resources/topbar_toptab_alarm_off.svg';
+import topTabList from './resources/topbar_toptab_list.svg';
+import topTabShare from './resources/topbar_toptab_share.svg';
 import styles from './Timetable.module.css';
 import {
   calculateTotalCredit,
@@ -59,6 +62,17 @@ const Timetable = () => {
                   ? `(${calculateTotalCredit(data)} 학점)`
                   : 'loading...'}
               </div>
+            </div>
+            <div className={styles.topTab}>
+              <button className={styles.tabButton}>
+                <img src={topTabList} alt="tab" />
+              </button>
+              <button className={styles.tabButton}>
+                <img src={topTabShare} alt="tab" />
+              </button>
+              <button className={styles.tabButton}>
+                <img src={topTabAlarmOff} alt="tab" />
+              </button>
             </div>
           </div>
         </div>
