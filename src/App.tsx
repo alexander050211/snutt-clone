@@ -37,8 +37,10 @@ const AppRoutes = () => {
     fetchInformation()
       .then((data) => {
         if (!ignore && data !== null) {
-          setNickname(data.nickname);
-          saveNickname(data.nickname);
+          if (getNickname() === undefined || getNickname() !== data.nickname) {
+            setNickname(data.nickname);
+            saveNickname(data.nickname);
+          }
         }
       })
       .catch((error: unknown) => {
@@ -51,7 +53,7 @@ const AppRoutes = () => {
     return () => {
       ignore = true;
     };
-  });
+  }, []);
 
   useEffect(() => {
     if (nickname != null) {
