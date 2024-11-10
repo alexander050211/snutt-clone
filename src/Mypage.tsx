@@ -36,8 +36,10 @@ const Mypage = ({ onLogout, toAccount }: MypageProps) => {
     fetchInformation()
       .then((data) => {
         if (!ignore && data !== null) {
-          setNickname(data.nickname);
-          saveNickname(data.nickname);
+          if (getNickname() === undefined || getNickname() !== data.nickname) {
+            setNickname(data.nickname);
+            saveNickname(data.nickname);
+          }
         }
       })
       .catch((error: unknown) => {
