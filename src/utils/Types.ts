@@ -14,7 +14,7 @@ export type InfoToken = {
   nickname: Nickname;
 };
 
-type ClassTime = {
+export type ClassTime = {
   day: 0 | 1 | 2 | 3 | 4 | 5 | 6;
   place: string;
   startMinute: number;
@@ -23,11 +23,23 @@ type ClassTime = {
   end_time: string;
 };
 
-type Lecture = {
-  id: string;
-  credit: number;
+export type Lecture = {
+  _id: string;
+  academic_year: string;
+  category: string;
   class_time_json: ClassTime[];
+  classification: string;
+  colorIndex: number;
+  credit: number;
+  department: string;
+  instructor: string;
+  lecture_number: string;
+  quota: number;
+  remark: string;
+  course_number: string;
   course_title: string;
+  lecture_id: string;
+  class_time_mask: number[];
 };
 
 export type InfoTimetable = {

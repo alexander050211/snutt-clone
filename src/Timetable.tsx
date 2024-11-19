@@ -3,6 +3,7 @@ import './reset.css';
 import { useEffect, useState } from 'react';
 
 import Coursetemplate from './CourseTemplate';
+import LectureBlock from './LectureBlock';
 import Navibar from './Navibar';
 import tabImage from './resources/topbar_listview.svg';
 import topTabAlarmOff from './resources/topbar_toptab_alarm_off.svg';
@@ -81,35 +82,21 @@ const Timetable = () => {
         <Coursetemplate />
       </main>
       {data !== null &&
-        data.lecture_list.map((lecture, index1) => {
-          return (
-            <div key={-index1}>
-              {lecture.class_time_json.map((classTime, index2) => {
-                const start = classTime.startMinute - 60 * 9;
-                const length = classTime.endMinute - classTime.startMinute;
-                const day = classTime.day;
-
-                return (
-                  <div
-                    className={styles.lectureBlock}
-                    key={index1 * data.lecture_list.length + index2}
-                    style={{
-                      top: `calc(68px + (${start} * (100% - 68px - 50px)) / 780)`,
-                      left: `calc(21px + ${day} * (100% - 22px) / 5)`,
-                      height: `calc((${length} * (100% - 68px - 50px)) / 780)`,
-                    }}
-                  >
-                    <div className={styles.lectureBlockText}>
-                      {lecture.course_title}
-                      <br />
-                      {classTime.place}
-                    </div>
-                  </div>
-                );
-              })}
-            </div>
-          );
-        })}
+        data.lecture_list.map((lecture, index1) => (
+          <div key={-index1}>
+            {lecture.class_time_json.map((classTime, index2) => (
+              <LectureBlock
+                key={index1 * data.lecture_list.length + index2}
+                timetableId={data._id}
+                lecture={lecture}
+                classTime={classTime}
+                index1={index1}
+                index2={index2}
+                lectureListLength={data.lecture_list.length}
+              />
+            ))}
+          </div>
+        ))}
       <footer className={styles.navibarFrame}>
         <Navibar />
       </footer>

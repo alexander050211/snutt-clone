@@ -82,3 +82,22 @@ export const getNickname = (): Nickname | undefined => {
   }
   return undefined;
 };
+
+export const deleteLecture = async (
+  timetableId: string,
+  timetableLectureId: string,
+) => {
+  try {
+    const url = `https://wafflestudio-seminar-2024-snutt-redirect.vercel.app/v1/tables/${timetableId}/lecture/${timetableLectureId}`;
+    const response = await fetch(url, {
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json',
+        'x-access-token': getToken() as string,
+      },
+    });
+    return (await response.json()) as InfoTimetable;
+  } catch (error) {
+    console.error('Error: ', error);
+  }
+};
