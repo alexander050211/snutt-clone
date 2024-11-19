@@ -10,6 +10,7 @@ import {
 } from 'react-router-dom';
 
 import Home from './Home';
+import LectureDetail from './LectureDetail';
 import Login from './Login';
 import Mypage from './Mypage';
 import MypageAccount from './MypageAccount';
@@ -129,6 +130,10 @@ const AppRoutes = () => {
           element={
             <MypageAccountChange toAccount={toAccount} notify={notify} />
           }
+        />
+        <Route
+          path="/timetables/:tableId/lectures/:lectureId"
+          element={<LectureDetail />}
         />
       </Routes>
       <Toaster />
