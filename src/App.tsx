@@ -1,5 +1,3 @@
-import './reset.css';
-
 import { useEffect, useState } from 'react';
 import toast, { Toaster } from 'react-hot-toast';
 import {
@@ -9,13 +7,17 @@ import {
   useNavigate,
 } from 'react-router-dom';
 
+import './reset.css';
+
 import Home from './Home';
 import LectureDetail from './LectureDetail';
+import LectureList from './LectureList';
 import Login from './Login';
 import Mypage from './Mypage';
 import MypageAccount from './MypageAccount';
 import MypageAccountChange from './MypageChangeNickname';
 import Timetable from './Timetable';
+
 import {
   getNickname,
   getToken,
@@ -23,10 +25,9 @@ import {
   saveNickname,
   saveToken,
   TOKEN_STORAGE_KEY,
+  fetchInformation,
 } from './utils/Functions';
-import { fetchInformation } from './utils/Functions';
 import type { Nickname } from './utils/Types';
-import LectureList from './LectureList';
 
 const AppRoutes = () => {
   const [nickname, setNickname] = useState<Nickname | undefined>(() => {

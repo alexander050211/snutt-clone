@@ -33,3 +33,68 @@
   margin-left: 5px;
   font-weight: bold;
 }
+
+.list {
+  position: fixed;
+  top: 50px;
+  bottom: 50px;
+  left: 0px;
+  right: 0px;
+  overflow-y: auto;
+  background-color: #f4f4f4;
+}
+
+.lectureItem {
+  border: transparent;
+  border-bottom: 1px solid #ddd;
+  padding-left: 15px;
+  padding-right: 15px;
+  padding-bottom: 10px;
+  padding-top: 10px;
+  width: 100%;
+  color: black;
+  background-color: lightgray;
+}
+
+.lectureInfo {
+  font-size: 14px;
+}
+
+.mainline {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  flex-direction: row;
+}
+
+.subline {
+  font-size: 14px;
+  display: flex;
+  width: 100%;
+  align-content: center;
+}
+
+.classTimes {
+  font-size: 14px;
+  display: flex;
+}
+
+.classTime {
+  margin-right: 5px;
+}
+
+.lectureIcon {
+  width: 14px;
+  height: 14px;
+  margin-right: 5px;
+  align-content: center;
+}
+
+.navibarFrame {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 50px;
+  background: white;
+}
