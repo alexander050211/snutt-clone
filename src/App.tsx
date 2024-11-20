@@ -26,6 +26,7 @@ import {
 } from './utils/Functions';
 import { fetchInformation } from './utils/Functions';
 import type { Nickname } from './utils/Types';
+import LectureList from './LectureList';
 
 const AppRoutes = () => {
   const [nickname, setNickname] = useState<Nickname | undefined>(() => {
@@ -135,6 +136,7 @@ const AppRoutes = () => {
           path="/timetables/:tableId/lectures/:lectureId"
           element={<LectureDetail />}
         />
+        <Route path="/lectureList" element={<LectureList />} />
       </Routes>
       <Toaster />
     </>

@@ -17,6 +17,7 @@ import {
   TOKEN_STORAGE_KEY,
 } from './utils/Functions';
 import type { InfoTimetable } from './utils/Types';
+import { Link } from 'react-router-dom';
 
 const Timetable = () => {
   const [data, setData] = useState<InfoTimetable | null>(null);
@@ -65,9 +66,9 @@ const Timetable = () => {
               </div>
             </div>
             <div className={styles.topTab}>
-              <button className={styles.tabButton}>
+              <Link to="/lecturelist" className={styles.tabButton}>
                 <img src={topTabList} alt="tab" />
-              </button>
+              </Link>
               <button className={styles.tabButton}>
                 <img src={topTabShare} alt="tab" />
               </button>
