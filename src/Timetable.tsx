@@ -66,9 +66,19 @@ const Timetable = () => {
               </div>
             </div>
             <div className={styles.topTab}>
-              <Link to="/lecturelist" className={styles.tabButton}>
-                <img src={topTabList} alt="tab" />
-              </Link>
+              {data !== null ? (
+                <Link
+                  to={`/timetables/${data._id}/lectures/`}
+                  className={styles.tabButton}
+                  state={{ timetableId: data._id }}
+                >
+                  <img src={topTabList} alt="tab" />
+                </Link>
+              ) : (
+                <div className={styles.tabButton}>
+                  <img src={topTabList} alt="tab" />
+                </div>
+              )}
               <button className={styles.tabButton}>
                 <img src={topTabShare} alt="tab" />
               </button>

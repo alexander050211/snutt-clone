@@ -1,6 +1,6 @@
 import React from 'react';
 import { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 
 import styles from './LectureList.module.css';
 import Navibar from './Navibar';
@@ -23,6 +23,15 @@ const getWeekdayString = (day: number): string => {
 
 const LectureList = () => {
   const [data, setData] = useState<InfoTimetable | null>(null);
+  const location = useLocation();
+  const navigate = useNavigate();
+  const { timetableId } = location.state as { timetableId: string };
+
+  const handleClick = () => {
+    navigate(`/timetables/${timetableId}/new`, {
+      state: { timetableId: timetableId },
+    });
+  };
 
   useEffect(() => {
     let ignore = false;
@@ -50,6 +59,9 @@ const LectureList = () => {
           <img src={leftArrow} />
         </Link>
         <div className={styles.pageTitle}>강의 목록</div>
+        <div className={styles.upperRight} onClick={handleClick}>
+          +
+        </div>
       </div>
       <div className={styles.list}>
         {data !== null &&
