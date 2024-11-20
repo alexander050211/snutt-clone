@@ -1,3 +1,5 @@
+import './reset.css';
+
 import { useEffect, useState } from 'react';
 import toast, { Toaster } from 'react-hot-toast';
 import {
@@ -7,8 +9,6 @@ import {
   useNavigate,
 } from 'react-router-dom';
 
-import './reset.css';
-
 import Home from './Home';
 import LectureDetail from './LectureDetail';
 import LectureList from './LectureList';
@@ -17,15 +17,14 @@ import Mypage from './Mypage';
 import MypageAccount from './MypageAccount';
 import MypageAccountChange from './MypageChangeNickname';
 import Timetable from './Timetable';
-
 import {
+  fetchInformation,
   getNickname,
   getToken,
   NICKNAME_STORAGE_KEY,
   saveNickname,
   saveToken,
   TOKEN_STORAGE_KEY,
-  fetchInformation,
 } from './utils/Functions';
 import type { Nickname } from './utils/Types';
 

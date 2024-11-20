@@ -2,13 +2,12 @@ import React from 'react';
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 
-import Navibar from './Navibar';
 import styles from './LectureList.module.css';
-import leftArrow from './resources/lecturedetail_leftarrow.svg';
-import lectureLocation from './resources/lecture_location.svg';
+import Navibar from './Navibar';
 import lectureClock from './resources/lecture_clock.svg';
+import lectureLocation from './resources/lecture_location.svg';
 import lectureTag from './resources/lecture_tag.svg';
-
+import leftArrow from './resources/lecturedetail_leftarrow.svg';
 import {
   fetchTimetable,
   NICKNAME_STORAGE_KEY,

@@ -1,18 +1,16 @@
+import './reset.css';
+
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-
-import './reset.css';
 
 import Coursetemplate from './CourseTemplate';
 import LectureBlock from './LectureBlock';
 import Navibar from './Navibar';
-import styles from './Timetable.module.css';
-
 import tabImage from './resources/topbar_listview.svg';
 import topTabAlarmOff from './resources/topbar_toptab_alarm_off.svg';
 import topTabList from './resources/topbar_toptab_list.svg';
 import topTabShare from './resources/topbar_toptab_share.svg';
-
+import styles from './Timetable.module.css';
 import {
   calculateTotalCredit,
   fetchTimetable,
