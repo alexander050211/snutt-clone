@@ -1,0 +1,69 @@
+.container {
+  font-family: 'Apple SD Gothic Neo';
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  margin-top: 0;
+}
+
+.upperBar {
+  display: flex;
+  height: 50px;
+  align-items: center;
+  margin: 0;
+  padding: 10px;
+}
+
+.upperRight {
+  margin-right: 0;
+  margin-left: auto;
+  padding-right: 20px;
+  font-size: 18px;
+  font-weight: bold;
+  align-items: center;
+}
+
+.content {
+  flex-grow: 1;
+  display: flex;
+  background-color: rgb(235, 236, 240);
+  flex-direction: column;
+  align-items: center;
+  border-top: 1px outset rgb(199, 199, 199);
+}
+
+.button {
+  background-color: white;
+  display: flex;
+  height: 48px;
+  font-size: 14px;
+  align-items: center;
+  width: 85%;
+  border: none;
+  border-radius: 6px;
+  margin: 0 auto;
+  padding: 10px;
+}
+
+.buttonLeft {
+  width: 90px;
+  color: rgb(90, 90, 90);
+}
+
+.buttonRight {
+  margin: auto;
+  color: rgb(162, 162, 162);
+}
+
+.inputBox {
+  background-color: white;
+  display: flex;
+  height: 48px;
+  font-size: 14px;
+  align-items: center;
+  width: 85%;
+  border: none;
+  border-radius: 6px;
+  margin-top: 0px;
+  outline: none;
+}

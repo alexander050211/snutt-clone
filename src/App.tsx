@@ -16,6 +16,7 @@ import Login from './Login';
 import Mypage from './Mypage';
 import MypageAccount from './MypageAccount';
 import MypageAccountChange from './MypageChangeNickname';
+import NewLecture from './NewLecture';
 import Timetable from './Timetable';
 import {
   fetchInformation,
@@ -136,7 +137,8 @@ const AppRoutes = () => {
           path="/timetables/:tableId/lectures/:lectureId"
           element={<LectureDetail />}
         />
-        <Route path="/lectureList" element={<LectureList />} />
+        <Route path="timetables/:tableId/lectures" element={<LectureList />} />
+        <Route path="timetables/:tableId/new" element={<NewLecture />} />
       </Routes>
       <Toaster />
     </>

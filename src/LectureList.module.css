@@ -20,6 +20,16 @@
   z-index: 100;
 }
 
+.upperRight {
+  font-size: 28px;
+  font-weight: bold;
+  align-items: center;
+  justify-content: center;
+  margin-right: 25px;
+  margin-left: auto;
+  margin-bottom: 4px;
+}
+
 .timetableButton {
   padding: 10px;
   display: flex;
