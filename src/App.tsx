@@ -11,12 +11,14 @@ import {
 
 import Home from './Home';
 import LectureDetail from './LectureDetail';
+import LectureList from './LectureList';
 import Login from './Login';
 import Mypage from './Mypage';
 import MypageAccount from './MypageAccount';
 import MypageAccountChange from './MypageChangeNickname';
 import Timetable from './Timetable';
 import {
+  fetchInformation,
   getNickname,
   getToken,
   NICKNAME_STORAGE_KEY,
@@ -24,7 +26,6 @@ import {
   saveToken,
   TOKEN_STORAGE_KEY,
 } from './utils/Functions';
-import { fetchInformation } from './utils/Functions';
 import type { Nickname } from './utils/Types';
 
 const AppRoutes = () => {
@@ -135,6 +136,7 @@ const AppRoutes = () => {
           path="/timetables/:tableId/lectures/:lectureId"
           element={<LectureDetail />}
         />
+        <Route path="/lectureList" element={<LectureList />} />
       </Routes>
       <Toaster />
     </>

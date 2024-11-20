@@ -1,6 +1,7 @@
 import './reset.css';
 
 import { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 
 import Coursetemplate from './CourseTemplate';
 import LectureBlock from './LectureBlock';
@@ -65,9 +66,9 @@ const Timetable = () => {
               </div>
             </div>
             <div className={styles.topTab}>
-              <button className={styles.tabButton}>
+              <Link to="/lecturelist" className={styles.tabButton}>
                 <img src={topTabList} alt="tab" />
-              </button>
+              </Link>
               <button className={styles.tabButton}>
                 <img src={topTabShare} alt="tab" />
               </button>
